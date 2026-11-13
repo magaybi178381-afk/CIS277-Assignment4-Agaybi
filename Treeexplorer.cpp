@@ -1,9 +1,9 @@
 #include "TreeExplorer.h"
- 
+
 #include <algorithm>
 #include <queue>
 
-namespace{
+namespace {
 
 void preorderHelper(const TreeNode* node, std::vector<int>& out) {
     if (node == nullptr) return;
@@ -90,5 +90,3 @@ void destroyTree(TreeNode*& root) {
     delete root;
     root = nullptr;
 }
-
-
