@@ -88,3 +88,42 @@ int main() {
         destroyTree(t);
     }
 
+    {
+        TreeNode* t = extraTree();
+        Seq first = preorder(t);
+        first[0] = 999;
+        first.push_back(-1);
+        first.clear();
+        check(preorder(t) == Seq({1, 2, 4, 5, 3, 6}), "preorder unchanged after edit");
+        Seq lvl = levelOrder(t);
+        lvl[0] = 42;
+        check(levelOrder(t) == Seq({1, 2, 3, 4, 5, 6}), "levelOrder unchanged after edit");
+        check(inorder(t) == inorder(t), "repeated inorder equal");
+        check(t->value == 1 && t->left->value == 2 && t->right->value == 3,
+              "tree values unchanged");
+        check(countNodes(t) == 6 && sumValues(t) == 21, "measurements unchanged");
+        destroyTree(t);
+    }
+ 
+    {
+        TreeNode* t = extraTree();
+        destroyTree(t);
+        check(t == nullptr, "first destroy clears root");
+        t = mk(5, mk(6), mk(7));
+        expectAll(t, {5, 6, 7}, {6, 5, 7}, {6, 7, 5}, {5, 6, 7}, 3, 2, 2, 18,
+                  "rebuilt tree");
+        destroyTree(t);
+        check(t == nullptr, "second destroy clears root");
+    }
+ 
+    {
+        TreeNode* t = extraTree();
+        expectAll(t, {1, 2, 4, 5, 3, 6}, {4, 2, 5, 1, 6, 3}, {4, 5, 2, 6, 3, 1},
+                  {1, 2, 3, 4, 5, 6}, 6, 3, 3, 21,
+                  "extra tree (node 3 has one child, so it is not a leaf)");
+        destroyTree(t);
+    }
+ 
+    std::cout << '\n' << (checks - failures) << "/" << checks << " checks passed\n";
+    return failures == 0 ? 0 : 1;
+}
