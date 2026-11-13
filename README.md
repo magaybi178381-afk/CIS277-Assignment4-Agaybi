@@ -5,7 +5,7 @@ Name: Marc Agaybi
 
 ## Design
 
-### Initial plan (written before implementation — REPLACE WITH YOUR OWN WORDING)
+### Initial plan 
 - **Node fields:** int value, TreeNode* left, TreeNode* right, both pointers defaulting to nullptr.
 - **Empty-tree base case:** every recursive function returns immediately (empty vector / 0) when the node pointer is nullptr.
 - **Collecting results:** each depth-first traversal creates one std::vector<int>, passes it by reference to a file-private helper, and the helper appends one value per visit. No subtree vectors are copied or concatenated.
