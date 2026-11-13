@@ -49,3 +49,42 @@ TreeNode* duplicateTree() {
 TreeNode* extraTree() { return mk(1, mk(2, mk(4), mk(5)), mk(3, mk(6))); }
  
 }
+
+int main() {
+    {
+        TreeNode* t = nullptr;
+        expectAll(t, {}, {}, {}, {}, 0, 0, 0, 0, "empty tree");
+        destroyTree(t);
+        destroyTree(t);
+        check(t == nullptr, "null root stays null after repeated destroy");
+    }
+ 
+    {
+        TreeNode* t = mk(-4);
+        expectAll(t, {-4}, {-4}, {-4}, {-4}, 1, 1, 1, -4, "singleton -4");
+        destroyTree(t);
+        check(t == nullptr, "singleton root cleared");
+    }
+ 
+    {
+        TreeNode* t = leftChain();
+        expectAll(t, {1, 2, 3, 4}, {4, 3, 2, 1}, {4, 3, 2, 1}, {1, 2, 3, 4}, 4, 1, 4,
+                  10, "left-only chain");
+        destroyTree(t);
+        check(t == nullptr, "left chain root cleared");
+    }
+    {
+        TreeNode* t = rightChain();
+        expectAll(t, {1, 2, 3, 4}, {1, 2, 3, 4}, {4, 3, 2, 1}, {1, 2, 3, 4}, 4, 1, 4,
+                  10, "right-only chain");
+        destroyTree(t);
+        check(t == nullptr, "right chain root cleared");
+    }
+ 
+    {
+        TreeNode* t = duplicateTree();
+        expectAll(t, {7, 0, -3, 7, 7, -3}, {-3, 0, 7, 7, 7, -3}, {-3, 7, 0, -3, 7, 7},
+                  {7, 0, 7, -3, 7, -3}, 6, 3, 3, 15, "duplicates, zero, negatives");
+        destroyTree(t);
+    }
+
