@@ -63,10 +63,6 @@ Result: `67/67 checks passed`.
 
 Chain prediction: preorder and level order cannot tell the chains apart; inorder reverses for the left chain because the deepest node is visited first; postorder is the same for both because the deepest node always finishes first.
 
-Memory check: 
-
-Public validator: 
-
 ## Analysis Questions
 
 1. **Subtree at 30 (Tree A, children 20 and 40).** Preorder: visit 30, then 20, then 40 → `30 20 40`. Inorder: finish 20, visit 30, then 40 → `20 30 40`. Postorder: 20, 40, then 30 → `20 40 30`. The visit order changes because the node is handled at a different moment relative to its children. The sum is 90 in every case because each node is added exactly once regardless of order and addition is commutative.
