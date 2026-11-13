@@ -83,4 +83,12 @@ long long sumValues(const TreeNode* root) {
            sumValues(root->right);
 }
 
+void destroyTree(TreeNode*& root) {
+    if (root == nullptr) return;
+    destroyTree(root->left);
+    destroyTree(root->right);
+    delete root;
+    root = nullptr;
+}
+
 
