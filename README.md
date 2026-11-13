@@ -5,17 +5,17 @@ Name: Marc Agaybi
 
 ## Design
 
-### Initial plan 
+Initial plan 
 - **Node fields:** int value, TreeNode* left, TreeNode* right, both pointers defaulting to nullptr.
 - **Empty-tree base case:** every recursive function returns immediately (empty vector / 0) when the node pointer is nullptr.
 - **Collecting results:** each depth-first traversal creates one std::vector<int>, passes it by reference to a file-private helper, and the helper appends one value per visit. No subtree vectors are copied or concatenated.
 - **Level order:** a std::queue<const TreeNode*>; pop the front, record it, push its non-null left then right child.
 - **Ownership:** every node is allocated with new in main.cpp/tests and belongs to exactly one tree. destroyTree deletes children first, then the node, and sets the caller's pointer to `nullptr`.
 
-### Changes to the plan
+Changes to the plan
 - None so far. (Record any later change here with a date/commit.)
 
-### Final design notes
+Final design notes
 - TreeExplorer.cpp keeps the three depth-first helpers in an anonymous namespace.
 - Tree A and Tree B are built with explicit pointer links through a small makeNode helper in main.cpp; no BST insert is used.
 - No lesson code was copied; if you adapt any, acknowledge it here.
@@ -36,7 +36,7 @@ On Windows PowerShell use .\tree_explorer.exe and .\student_tests.exe.
 
 ## Tests and Results
 
-### Predictions vs. actual: Tree A and Tree B
+Predictions vs. actual: Tree A and Tree B
 Diagrams are in the assignment. Tree A root 50, leaves 20 40 60 80. Tree B root 10, leaves 5 and 15 (30 and 20 each have one child).
 **Predictions (made before running — replace with your own work):**
 
@@ -53,7 +53,7 @@ Diagrams are in the assignment. Tree A root 50, leaves 20 40 60 80. Tree B root 
 
 Worked trace (Tree B preorder): visit 10; go left, visit 30; 30 has no left, go right, visit 5; back up to 10, go right, visit 20; no left, go right, visit 15 → `10 30 5 20 15`.
 
-### Student tests (tests/student_tests.cpp)
+Student tests (tests/student_tests.cpp)
 
 | # | Input / shape | Expected | Actual |
 |---|---|---|---|
@@ -72,10 +72,10 @@ Chain prediction: preorder and level order cannot tell the chains apart; inorder
 
 **Corrections made:** (record any real bugs you hit and fixed here; none recorded yet.)
 
-### Memory check
+Memory check
 FILL IN HONESTLY after running it yourself. Example: g++ -std=c++23 -g -fsanitize=address,undefined ... then run both programs; record "no errors/leaks reported" only if that is what you see. If unavailable, say so and add a manual new/delete trace for a small tree.
 
-### Public validator
+Public validator
 FILL IN after running python validate.py with the downloaded validator files.
 
 ## Analysis Questions
