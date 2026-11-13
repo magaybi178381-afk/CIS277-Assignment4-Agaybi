@@ -1,7 +1,7 @@
 # CIS-277 Assignment 4: Binary Tree Explorer
 
 ## Student
-Name: YOUR NAME HERE  (replace; do not include your student ID)
+Name: Marc Agaybi
 
 ## Design
 
